@@ -285,6 +285,7 @@ export default function useGameEngine() {
     if (!currentUser || !roomId || !gameState.room?.currentRoundData) return;
 
     const room = gameState.room;
+    if (!room?.currentRoundData) return;  // Extra safety check
     const player = room.players.find((p) => p.id === currentUser.uid);
     if (!player || room.currentRoundData.writerId === currentUser.uid) return; // Writer can't guess
 

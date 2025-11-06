@@ -9,11 +9,16 @@ import { getFirestore, setLogLevel } from "firebase/firestore";
 // DO NOT hardcode your real config here if this is a public repository.
 // For local dev, you can paste it here, but for deployment, use
 // environment variables (e.g., import.meta.env.VITE_FIREBASE_CONFIG)
+// Declare global variables for TypeScript
+declare const __firebase_config: string | undefined;
+declare const __initial_auth_token: string | undefined;
+declare const __app_id: string | undefined;
+
 let firebaseConfig;
 
-if (typeof __firebase_config !== 'undefined') {
+if (typeof window !== 'undefined' && '__firebase_config' in window) {
   // This global var is provided in the AI Studio environment
-  firebaseConfig = JSON.parse(__firebase_config);
+  firebaseConfig = JSON.parse(__firebase_config as string);
 } else {
   // Fallback for local development
   // REPLACE THIS with your actual Firebase config object
@@ -44,7 +49,7 @@ setLogLevel('debug');
  */
 export const authenticateUser = async () => {
   try {
-    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+    if (typeof window !== 'undefined' && '__initial_auth_token' in window && __initial_auth_token) {
       await signInWithCustomToken(auth, __initial_auth_token);
     } else {
       await signInAnonymously(auth);
@@ -59,7 +64,7 @@ export const authenticateUser = async () => {
  */
 export const getAppId = () => {
   // This global var is provided in the AI Studio environment
-  return typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+  return typeof window !== 'undefined' && '__app_id' in window ? __app_id : 'default-app-id';
 };
 
 export { app, auth, db };
