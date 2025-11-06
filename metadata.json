@@ -1,0 +1,5 @@
+{
+  "name": "Room Rumble",
+  "description": "A lightweight, account-free multiplayer word guessing game for up to 10 players. Join a room, guess the secret word, and compete for the top spot in this casual party game.",
+  "requestFramePermissions": []
+}
