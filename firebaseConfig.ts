@@ -20,18 +20,16 @@ if (typeof window !== 'undefined' && '__firebase_config' in window) {
   // This global var is provided in the AI Studio environment
   firebaseConfig = JSON.parse(__firebase_config as string);
 } else {
-  // Fallback for local development
-  // REPLACE THIS with your actual Firebase config object
-  console.warn("Using fallback Firebase config. Please set up __firebase_config or add your local config.");
-  firebaseConfig = {
-  apiKey: "AIzaSyA1ashHEqtJ493YESyJDfOlVBLSbwTrO9I",
-  authDomain: "room-rumble-c1653.firebaseapp.com",
-  projectId: "room-rumble-c1653",
-  storageBucket: "room-rumble-c1653.firebasestorage.app",
-  messagingSenderId: "696779204963",
-  appId: "1:696779204963:web:8eea89b1f7e9ec2ef18b56",
-  measurementId: "G-88YS2BF6BC"
-};
+  // Fallback for local development
+  console.warn("Using fallback Firebase config...");
+  firebaseConfig = {
+    apiKey: "YOUR_API_KEY_FOR_LOCAL_DEV_ONLY",
+     authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
 }
 
 // Initialize Firebase
